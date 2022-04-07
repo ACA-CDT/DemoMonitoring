@@ -18,6 +18,7 @@ namespace CarFix.Web.Services
 
         public async Task<List<HolidayModel>> GetHolidays(string countryCode, int year)
         {
+            System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
             var url = string.Format("/api/v2/PublicHolidays/{0}/{1}", year, countryCode);
             var result = new List<HolidayModel>();
             var response = await client.GetAsync(url);
