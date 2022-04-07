@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarFix.Web", "src\CarFix.Web\CarFix.Web.csproj", "{4D6567AE-B744-4156-8659-F66400B409DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM64 = Debug|ARM64
+		Release|Any CPU = Release|Any CPU
+		Release|ARM64 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Debug|ARM64.ActiveCfg = Release|ARM64
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Debug|ARM64.Build.0 = Release|ARM64
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Release|ARM64.ActiveCfg = Release|ARM64
+		{4D6567AE-B744-4156-8659-F66400B409DF}.Release|ARM64.Build.0 = Release|ARM64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B8F6783-6F5C-4E20-AC2C-952F96260DE0}
+	EndGlobalSection
+EndGlobal
