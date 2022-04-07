@@ -4,33 +4,39 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 using CarFix.Web.Models;
+using Microsoft.Extensions.Logging;
 
 namespace CarFix.Web.Services
 {
     public class HolidaysApiService : IHolidaysApiService
     {
-        private readonly HttpClient client;
-
-        public HolidaysApiService(IHttpClientFactory clientFactory)
+        private readonly HttpClient _client;
+        private readonly ILogger _logger;
+        public HolidaysApiService(IHttpClientFactory clientFactory,ILogger<HolidaysApiService> logger)
         {
-            client = clientFactory.CreateClient("PublicHolidaysApi");
+            _logger = logger;
+            _logger.LogInformation("Initialize HolidaysApiService - Create HttpClient");
+            _client = clientFactory.CreateClient("PublicHolidaysApi");
         }
 
         public async Task<List<HolidayModel>> GetHolidays(string countryCode, int year)
         {
-            System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
+            
             var url = string.Format("/api/v2/PublicHolidays/{0}/{1}", year, countryCode);
+            _logger.LogInformation("GetHolidays calling external url: " + url);
             var result = new List<HolidayModel>();
-            var response = await client.GetAsync(url);
+            var response = await _client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var stringResponse = await response.Content.ReadAsStringAsync();
-
+                _logger.LogInformation("Response Received");
+                _logger.LogTrace("GetHolidays: Deserialize to json length=" + stringResponse.Length);
                 result = JsonSerializer.Deserialize<List<HolidayModel>>(stringResponse,
                     new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             }
             else
             {
+                _logger.LogError("If you're seeing this, something bad happened");
                 throw new HttpRequestException(response.ReasonPhrase);
             }
 

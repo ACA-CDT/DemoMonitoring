@@ -15,7 +15,7 @@ namespace CarFix.Web
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+           CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -23,6 +23,13 @@ namespace CarFix.Web
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConsole();
+                    //logging.AddEventLog(); Only supported for Windows
+                    logging.AddEventSourceLogger();
                 });
     }
 }
