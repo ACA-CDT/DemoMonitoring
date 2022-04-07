@@ -22,7 +22,7 @@ namespace CarFix.Web.Controllers
             _logger = logger;
             _holidaysApiService = holidaysApiService;
         }
-         
+
         public async Task<IActionResult> Index(string countryCode, int year)
         {
             _logger.LogInformation("Calling Index action method in HomeController");
@@ -55,6 +55,11 @@ namespace CarFix.Web.Controllers
                 _logger.LogError(ex.Message); // Writes a critical message  at log level 5
             }
             return View(holidays);
+        }
+
+        public async Task<IActionResult> Error()
+        {
+            throw new Exception("Unhandled Error occurred on this page!");
         }
     }
 }
